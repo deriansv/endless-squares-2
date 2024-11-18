@@ -1,6 +1,6 @@
 import Square from "./Square";
 
-const SquareGrid = ({ squares }) => {
+function SquareGrid ({ squares }) {
     const numColumns = Math.ceil(Math.sqrt(squares.length));
     const numRows = Math.ceil(squares.length / numColumns);
 

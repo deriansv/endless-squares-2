@@ -1,6 +1,6 @@
 
 
-const AddSquareButton = ({ onClick }) => {
+function AddSquareButton  ({ onClick }) {
     return(
         <div className="button-container">
             <button onClick={onClick}> Lägg till ruta</button>

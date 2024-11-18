@@ -1,6 +1,6 @@
 
 
-const Square = ({ color }) => {
+function Square  ({ color }) {
     return (
         <div
             className="square"

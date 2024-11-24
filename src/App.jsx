@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import './App.css'
-// import { Square } from './components/Square'
 import { SquareGrid } from './components/SquareGrid'
+import './App.css'
+import "typeface-roboto";
 
 
 function getRandomColor(excludeColors) {
@@ -23,6 +23,7 @@ function getRandomColor(excludeColors) {
 
 function App() {
   const [squares, setSquares] = useState([])
+  const [nextDimension, setNextDimension] = useState(1)
 
   function addSquare() {
     const excludeColors = squares.length > 0 ? squares[squares.length - 1].color : null;
@@ -30,15 +31,40 @@ function App() {
       id: squares.length + 1,
       color: getRandomColor(excludeColors)
     };
-    setSquares([...squares, newSquare])
+    const newSquares = Array.isArray(squares) ? [...squares, newSquare] : [newSquare];
+
+    if (newSquares.length > nextDimension * nextDimension) {
+      setNextDimension(nextDimension + 1);
+    }
+    setSquares(newSquares)
   }
- 
+
+  function clearSquares() {
+    setSquares([]);
+    setNextDimension(1);
+  }
 
   return (
     <>
 
-    <Square />
-    <SquareGrid />
+    <header className='logo'>
+      <img src="/src/img/wizardworks-logo-white.svg" alt="" />
+    </header>
+
+    <div className='body-container'>
+      
+      <div className='button-container'>
+        <button onClick={addSquare}>Add square</button>
+        <button onClick={clearSquares}>Clear</button>
+      </div>
+
+      <div className='square-container'>
+        <SquareGrid squares={squares} dimension={nextDimension} />
+      </div>
+
+
+    </div>
+   
     </>
   )
 }

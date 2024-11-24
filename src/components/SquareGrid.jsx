@@ -1,26 +1,30 @@
 import Square from "./Square";
 
-function SquareGrid ({ squares }) {
-    const numColumns = Math.ceil(Math.sqrt(squares.length));
-    const numRows = Math.ceil(squares.length / numColumns);
+export function SquareGrid ({ squares, dimension }) {
+ 
+    const squaresArray = Array.isArray(squares) ? squares : [];
 
     const gridStyle = {
         display: 'grid',
-        gridTemplateColumns: `repeat(${numColumns}, 1fr)`,
-        gridTemplateRows: `repeat(${numRows}, 1fr)`,
-        gap: '10px',
+        gridTemplateColumns: `repeat(${dimension}, 1fr)`,
+        gridTemplateRows: `repeat(${dimension}, 1fr)`,
+        gap: '5px',
         direction: 'rtl',
-        justifyContent: 'end',
-        gridAutoFlow: 'dense',
+        gridAutoFlow: 'row',
+        marginBottom: '30px',
+        marginTop: '100px',
+        // height: '100%'
+        // justifyContent: 'start',
+        // alignItems: 'start',
     };
 
     return (
+        <>
         <div className="grid-container" style={gridStyle}>
-            {squares.map((square) => (
+            {squaresArray.map((square) => (
                 <Square key={square.id} color={square.color} />
             ))}
         </div>
+        </>
     );
 }
-
-export default SquareGrid

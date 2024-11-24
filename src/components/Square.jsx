@@ -1,3 +1,4 @@
+import '../App.css'
 
 
 function Square  ({ color }) {
@@ -6,9 +7,14 @@ function Square  ({ color }) {
             className="square"
             style={{
                 backgroundColor: color, 
-                width: '50px', 
-                height: '50px',
-                margin: '5px'
+                width: '60px', 
+                height: '60px',
+                margin: '2px',
+                border: '1px solid black',
+                display: 'flex',
+                justifyContent:'center',
+                alignItems: 'center',
+                borderRadius: '5px'
             }}
         />    
     );

@@ -1,12 +1,10 @@
 import { useState } from 'react'
-
 import './App.css'
-import { AddSquareButton } from './components/AddSquareButton'
-import { Square } from './components/Square'
-import { SqaureGrid } from './components/SquareGrid'
+// import { Square } from './components/Square'
+import { SquareGrid } from './components/SquareGrid'
 
 
-function getRandomColor(excludeColors) {
+function getRandomColor(excludeColors) {
   const letters = '0123456789ABCDEF'
   let color;
 
@@ -26,7 +24,7 @@ function getRandomColor(excludeColors) {
 function App() {
   const [squares, setSquares] = useState([])
 
-  function addSquare() {
+  function addSquare() {
     const excludeColors = squares.length > 0 ? squares[squares.length - 1].color : null;
     const newSquare = {
       id: squares.length + 1,
@@ -40,8 +38,7 @@ function App() {
     <>
 
     <Square />
-    <AddSquareButton />
-    <SqaureGrid />
+    <SquareGrid />
     </>
   )
 }

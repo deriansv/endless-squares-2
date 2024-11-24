@@ -15,7 +15,7 @@ function SquareGrid ({ squares }) {
     };
 
     return (
-        <div className="square-container" style={gridStyle}>
+        <div className="grid-container" style={gridStyle}>
             {squares.map((square) => (
                 <Square key={square.id} color={square.color} />
             ))}

@@ -6,7 +6,7 @@ import "typeface-roboto";
 
 function App() {
   const [squares, setSquares] = useState([])
-  const [nextGridsize, setNextGridSize] = useState(1)
+  const [nextGridSize, setNextGridSize] = useState(1)
 
   function addSquare() {
     const excludeColors = squares.length > 0 ? squares[squares.length - 1].color : null;
@@ -17,8 +17,8 @@ function App() {
 
     const newSquares = Array.isArray(squares) ? [...squares, newSquare] : [newSquare];
 
-    if (newSquares.length > nextGridsize * nextGridsize) {
-      setNextGridSize(nextGridsize + 1);
+    if (newSquares.length > nextGridSize * nextGridSize) {
+      setNextGridSize(nextGridSize + 1);
     }
     setSquares(newSquares)
   }
@@ -42,7 +42,7 @@ function App() {
       </div>
 
       <div className='square-container'>
-        <SquareGrid squares={squares} dimension={nextGridsize} />
+        <SquareGrid squares={squares} dimension={nextGridSize} />
       </div>
     </div>
     </>

@@ -13,9 +13,6 @@ export function SquareGrid ({ squares, dimension }) {
         gridAutoFlow: 'row',
         marginBottom: '30px',
         marginTop: '100px',
-        // height: '100%'
-        // justifyContent: 'start',
-        // alignItems: 'start',
     };
 
     return (

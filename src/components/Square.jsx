@@ -1,6 +1,5 @@
 import '../App.css'
 
-
 function Square  ({ color }) {
     return (
         <div

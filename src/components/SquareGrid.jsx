@@ -5,21 +5,26 @@ export function SquareGrid ({ squares, dimension }) {
     const squaresArray = Array.isArray(squares) ? squares : [];
 
     const gridStyle = {
-        display: 'grid',
-        gridTemplateColumns: `repeat(${dimension}, 1fr)`,
-        gridTemplateRows: `repeat(${dimension}, 1fr)`,
-        gap: '5px',
-        direction: 'rtl',
-        gridAutoFlow: 'row',
-        marginBottom: '30px',
-        marginTop: '100px',
+        // display: 'grid',
+        // gridTemplateColumns: `repeat(${dimension}, 1fr)`,
+        // gridTemplateRows: `repeat(${dimension}, 1fr)`,
+        // gap: '5px',
+        // direction: 'rtl',
+        // gridAutoFlow: 'row',
+        // marginBottom: '30px',
+        // marginTop: '100px',
     };
 
     return (
         <>
         <div className="grid-container" style={gridStyle}>
-            {squaresArray.map((square) => (
-                <Square key={square.id} color={square.color} />
+            {squaresArray.map((column, index) => (
+                <div className="column" key={index}>
+                    {column.map((square) => (
+                        <Square key={square.id} color={square.color} />
+                    ))}
+                </div>
+                
             ))}
         </div>
         </>

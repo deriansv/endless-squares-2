@@ -2,13 +2,12 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    border: 2px solid red;
     padding: 6px;
-}
-
-.grid-container {
+  }
+   
+  .grid-container {
     display: flex;
     margin-top: 100px;
-}
+  }

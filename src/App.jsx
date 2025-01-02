@@ -12,7 +12,7 @@ function App() {
   //   [square, square, square],
   //   [square, square, square],
   //   [square, square, square],
-  //   [square, square, square, square],
+  //   [square, square, square, squares],
   // ];
 
   let isSquare = false;
@@ -29,7 +29,7 @@ function App() {
     const excludeColors =
       squares.length > 0 ? squares[squares.length - 1].color : null;
     const newSquare = {
-      id: squares.length + 1,
+      id: crypto.randomUUID(),
       color: getRandomColor(excludeColors),
     };
     let newSquares = [];
@@ -39,41 +39,40 @@ function App() {
       squares[0].push(newSquare);
       newSquares = [...squares];
       setSquares(newSquares);
-      console.log(squares);
       return;
     }
 
     squares.forEach((column) => {
       if (column.length !== squares.length) isSquare = false;
-     
     });
 
     if (isSquare) {
       newSquares = [...squares, [newSquare]];
-      console.log('Is square!')
+      setSquares(newSquares);
+      return;
     }
 
-    if (!isSquare) {
-      for (let i = squares.length - 1; i > 0; i--) {
-        if (squares[i].length >= squares[0]) {
-          squares[i].push(newSquare);
-          newSquares = [...squares];
-          return;
-        }
+    for (let i = squares.length - 1; i >= 0; i--) {
+      if (i === 0) {
+        squares[i].push(newSquare);
+        newSquares = [...squares];
+        setSquares(newSquares);
+        return;
       }
+
+      if (squares[i].length > squares[0].length) {
+        continue;
+      }
+
+      squares[i].push(newSquare);
+      newSquares = [...squares];
+      setSquares(newSquares);
+      return;
     }
-
-    // if (newSquares.length > nextGridSize * nextGridSize) {
-    //   setNextGridSize(nextGridSize + 1);
-    // }
-
-    setSquares(newSquares);
-    console.log(squares);
   }
 
   function clearSquares() {
-    setSquares([]);
-    // setNextGridSize(1);
+    setSquares([[]]);
   }
 
   return (
